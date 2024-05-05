@@ -20,7 +20,7 @@ module.exports = {
     'prettier/prettier':[
       'error',
       {
-        'endofline':'auto',
+        'endofLine':'auto',
       }
     ],
     '@typescript-eslint/interface-name-prefix': 'off',
