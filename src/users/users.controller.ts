@@ -12,7 +12,7 @@ import {
 
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
-// import { LocalAuthGuard } from '../auth/local.auth.guard';
+import { LocalAuthGuard } from '../auth/local.auth.guard';
 // import { AuthenticatedGuard } from 'src/auth/authenticated.guard';
 // import { ApiBody, ApiOkResponse } from '@nestjs/swagger';
 
@@ -26,4 +26,12 @@ export class UsersController {
     createUser(@Body() createUserDto: CreateUserDto) {
         return this.usersService.create(createUserDto);
       }
+
+
+    @Post('/login')  
+    @UseGuards(LocalAuthGuard)
+    @HttpCode(HttpStatus.OK)
+    login(@Request() req) {
+      return { user: req.user, msg: 'Logged in' };
+    }
 }
